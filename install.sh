@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if (( $EUID != 0 )); then
-    echo "Please run as root"
-    exit
-else
-
 usr=$(whoami)
 
 apt install curl -y
@@ -52,5 +47,3 @@ echo "[..] -- syncthing is up and running. Enjoy!"
 read -p "[..] -- press enter to end"
 clear
 exit
-
-if
