@@ -2,6 +2,9 @@
 
 usr=$(whoami)
 
+apt install curl -y
+clear
+
 # Add the release PGP keys:
 curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
 
@@ -9,12 +12,16 @@ curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
 echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
 
 # Update and install syncthing:
-sudo apt-get update
-sudo apt-get install nano net-tools apache2 syncthing -y
+apt update
+apt install nano -y
+apt install net-tools -y
+apt install apache2 -y
+apt install syncthing -y
 
 # enable syncthing as service and starts it for the first time
 systemctl enable syncthing@$usr.service
 systemctl start syncthing@$usr.service
+clear
 
 echo "[..] -- please wait ..."
 sleep 30s
@@ -30,8 +37,6 @@ clear
 
 echo "[..] -- the config file will now opend up"
 echo "[..] -- now you have to update your ip for the webinterface"
-echo "[..] -- your ip is ..."
-
 
 sleep 10s
 read -p "[..] -- press enter to continue"
